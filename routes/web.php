@@ -15,12 +15,22 @@
 
 Route::get('/','ThemeController@home_page');
 
+Route::post('/post/add','PostController@store')->name('posts.store');
+
+Route::get('/posts','PostController@index')->middleware('checkUserAge')->name('posts.index');
+
+Route::get('/posts/{id}','PostController@destroy')->name('posts.destroy');
+
+Route::get('/posts/edit/{id}','PostController@edit')->name('posts.edit');
+
+Route::post('/posts/update/{id}','PostController@update')->name('posts.update');
+
 
 // Daynamic Route
 
 // Route::get('/user/{name}',function ($name){
 //     echo $name;
-// })->where('name','[A-Za-z]+'); 
+// })->where('name','[A-Za-z]+');
 
 
 // Route::get('/user/{id}',function ($id){
@@ -39,3 +49,7 @@ Route::get('/','ThemeController@home_page');
 //     });
 
 // });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
