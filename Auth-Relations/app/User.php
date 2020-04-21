@@ -42,4 +42,14 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Profile');
     }
+
+    public function posts()
+    {
+        return $this->hasMany('App\Post');
+    }
+
+    public function courses()
+    {
+        return $this->belongsToMany('App\Course');
+    }
 }
